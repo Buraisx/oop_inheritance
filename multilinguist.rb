@@ -52,3 +52,44 @@ class Multilinguist
     json_response['translationText']
   end
 end
+
+class MathGenius < Multilinguist
+    def report_total(array_nums)
+      sum = 0
+      array_nums.each do |numbers|
+        sum += numbers
+      end
+      return say_in_local_language("The total is #{sum}")
+    end
+end
+
+class QuoteCollector < Multilinguist
+  def initialize
+    @quote_collection = []
+  end
+
+  def add_quote(quote)
+    @quote_collection << quote
+  end
+
+  def unleash_quote
+    return say_in_local_language(@quote_collection.sample)
+  end
+end
+
+me = MathGenius.new
+puts me.report_total([23,45,676,34,5778,4,23,5465]) # The total is 12048
+me.travel_to("India")
+puts me.report_total([6,3,6,68,455,4,467,57,4,534]) # है को कुल 1604
+me.travel_to("Italy")
+puts me.report_total([324,245,6,343647,686545]) # È Il totale 1030767
+
+me2 = QuoteCollector.new
+me2.add_quote("90 percent of facts on the internet are true - Genghis Khan")
+me2.add_quote("Fly you fools - Dumbledore")
+me2.add_quote("Why don't you take a seat over here? - Chris Handsome")
+puts me2.unleash_quote
+me2.travel_to("Japan")
+puts me2.unleash_quote
+me2.travel_to("Spain")
+puts me2.unleash_quote
