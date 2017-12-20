@@ -9,7 +9,7 @@ class TestMultilinguist < MiniTest::Test
 
   end
   def test_language_in_no_country
-    assert_equal("NA"eaker.language_in(""))
+    assert_equal("NA", @speaker.language_in(""))
   end
 
   def test_language_in_appropriate_country
